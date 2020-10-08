@@ -1,6 +1,6 @@
 FROM openjdk:13-jdk-alpine
 LABEL maintainer="Lehlogonolo Masubelele"
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=release/*.jar
 
 
 # Running applications with user privileges helps to mitigate some risks
