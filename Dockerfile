@@ -3,8 +3,8 @@ LABEL maintainer="Lehlogonolo Masubelele"
 ARG JAR_FILE=./release/*.jar
 
 # Running applications with user privileges helps to mitigate some risks
-# RUN addgroup -S spring && adduser -S spring -G spring - disabling this fixes deploymen error with bamboo
-# USER spring:spring - disabling this fixes deploymen error with bamboo
+# RUN addgroup -S spring && adduser -S spring -G spring - disabling this fixes deployment error with bamboo
+# USER spring:spring - disabling this fixes deployment error with bamboo
 
 
 EXPOSE 8080
