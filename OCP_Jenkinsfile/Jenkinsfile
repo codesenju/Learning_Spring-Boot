@@ -1,0 +1,11 @@
+node('maven') {
+stage 'buildInDev'
+openshiftBuild(namespace: 'ifinance-gli-dev', buildConfig: 'spring-boot-app', showBuildLogs: 'true')
+stage 'deployInDev'
+openshiftDeploy(namespace: 'ifinance-gli-dev', deploymentConfig: 'spring-boot-app')
+openshiftScale(namespace: 'ifinance-gli-dev', deploymentConfig: 'spring-boot-app', replicaCount: '1')
+stage 'deployInUat'
+openshiftTag(namespace: 'ifinance-gli-dev', sourceStream: 'spring-boot-app', sourceTag: 'latest', destinationStream: 'spring-boot-app', destinationTag: 'promoteToQA')
+openshiftDeploy(namespace: 'ifinance-gli-uat', deploymentConfig: 'spring-boot-app')
+//openshiftScale(namespace: 'ifinance-gli-uat', deploymentConfig: 'boot-app',replicaCount: '2')
+}
